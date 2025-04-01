@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: microservice-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: microservice-checkout
+          uri: lb://microservice-checkout
+          predicates:
+            - Path=/checkouts/**
+          filters:
+            - AddRequestHeader=X-Request-from, gateway
+            - AddResponseHeader=X-Response-Red, Blue
+        - id: microservice-product
+          uri: lb://microservice-product
+          predicates:
+            - Path=/products/**
+    config:
+      discovery:
+        enabled: true
+        serviceId: microservice-config
+
+server:
+  port: 8080
