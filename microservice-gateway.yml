@@ -8,6 +8,9 @@ spring:
           issuer-uri: http://localhost:8085/realms/dh
   cloud:
     gateway:
+    # TokenRelay es un filtro que propaga el token hacia los servicios
+      default-filters:
+      - TokenRelay=
       routes:
         - id: microservice-checkout
           uri: lb://microservice-checkout
