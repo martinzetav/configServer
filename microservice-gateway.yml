@@ -1,6 +1,11 @@
 spring:
   application:
     name: microservice-gateway
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8085/realms/dh
   cloud:
     gateway:
       routes:
