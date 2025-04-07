@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: microservice-checkout
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8085/realms/dh
+
+server:
+  port: 9090
